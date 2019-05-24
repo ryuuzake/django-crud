@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Database Mahasiswa</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style type="text/css">
+      body {
+        font-family: sans-serif;
+      }
+      h1, h2 { text-align: center; }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        text-align: center;
+      }
+      th, td {
+        border-bottom: 1px solid #ddd;
+        padding: 8px;
+      }
+
+      tr:nth-child(even) {background-color: #f2f2f2}
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+	    <a class="navbar-brand" href="{% url 'index' %}">Database Mahasiswa</a>
+    </nav>
+    <div class="jumbotron">
+      <h1>Data Mahasiswa</h1>
+    </div>
+    <div class="container" style="margin-bottom: 2em">
+      <a href="{% url 'insert' %}">
+        <button class="btn btn-primary">Add Data</button>
+      </a>
+    </div>
+    <div class="fluid-container">
+      {% if mahasiswa_list %}
+        <table align="center">
+          <tr>
+            <th>No</th>
+            <th>Nama</th>
+            <th>Jenis Kelamin</th>
+          </tr>
+          {% for mahasiswa in mahasiswa_list %}
+            <tr>
+              <td>{{ forloop.counter }}</td>
+              <td><a href="{% url 'detail' mahasiswa.nrp %}">{{ mahasiswa.nama }}</a></td>
+              {% if mahasiswa.gender == 'L' %}
+                <td>Laki-Laki</td>
+              {% else %}
+                <td>Perempuan</td>
+              {% endif %}
+            </tr>
+          {% endfor %}
+        </table>
+      {% else %}
+        <h1>Belum ada data mahasiswa.</h1>
+      {% endif %}
+    </div>
+  </body>
+</html>

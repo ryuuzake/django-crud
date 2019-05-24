@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Database Mahasiswa</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'index' %}">Database Mahasiswa</a>
+  </nav>
+  <div class="jumbotron">
+    <h1>Detail Mahasiswa</h1>
+  </div>
+  <div class="container">
+    <table>
+      {% for key, value in detail_list %}
+        <tr>
+          <th>{{key}}</th>
+          <td>{{value}}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+  <div class="container" style="margin-bottom: 2em">
+    <a href="{% url 'update' nrp %}">
+      <button class="btn btn-primary">Update</button>
+    </a>
+    <a href="{% url 'delete' nrp %}">
+      <button class="btn btn-primary">Delete</button>
+    </a>
+  </div>
+</body>
+</html>

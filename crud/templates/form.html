@@ -1,0 +1,19 @@
+{% if error_message %}<p><strong>{{ error_message }}</strong>{% endif %}
+
+<form action="" method="post">
+  {% csrf_token %}
+  {% if input_dict %}
+  <input type="text" name="nrp" placeholder="NRP" value="{{ nrp }}">
+  <input type="text" name="nama" placeholder="Nama" value="{{ nama }}">
+  <input type="number" name="umur" placeholder="Umur" value="{{ umur }}">
+  <input type="text" name="gender" placeholder="Jenis Kelamin" value="{{ gender }}">
+  <input type="text" name="alamat" placeholder="Alamat" value="{{ alamat }}">
+  {% else %}
+  <input type="text" name="nrp" placeholder="NRP">
+  <input type="text" name="nama" placeholder="Nama">
+  <input type="number" name="umur" placeholder="Umur">
+  <input type="text" name="gender" placeholder="Jenis Kelamin">
+  <input type="text" name="alamat" placeholder="Alamat">
+  {% endif %}
+  <input type="submit" name="submit">
+</form>
